@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+/* Candidate */
+Route::get('candidate/acount', [CandidateController::class,'account'])->name('candidate_account');
+Route::get('candidate/profile/{id}/edit',[CandidateController::class,'profile_edit'])->name('candidate_profile_edit');
+Route::post('candidate/profile/{id}/update',[CandidateController::class,'profile_update'])->name('candidate_profile_update');
+Route::get('/candidate/{id}/download', [CandidateController::class, 'downloadCV'])->name('candidate.download');
