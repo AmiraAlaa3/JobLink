@@ -51,14 +51,23 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div class="d-flex align-items-center ms-lg-5 me-2 my-sm-3">
-                    <img src={{ asset('images/user.png') }} alt="User Profile Picture" width="40" height="40"
-                        class="rounded-circle d-inline-block align-text-top">
+                    @if(auth()->check())
+                        @if($candidate->image)
+                            <img src="{{ asset('uploads/' . $candidate->image) }}" alt="User Picture" width="40" height="40" class="rounded-circle d-inline-block align-text-top">
+                        @else
+                            <img src="{{ asset('images/user.png') }}" alt="User Profile Picture" width="40" height="40" class="rounded-circle d-inline-block align-text-top">
+                        @endif
+                        <a href="{{ route('logout') }}" class="btn btn-outline-danger ms-3">Logout</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
+                    @endif
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="container my-5">
+        @include('partials.alert')
         @yield('content')
     </div>
 

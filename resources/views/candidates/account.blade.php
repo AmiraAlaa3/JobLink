@@ -5,8 +5,12 @@
 @section('content')
     <div class="row border p-4 rounded shadow-sm bg-light">
         <div class="col-md-2 text-center mb-4 mb-md-0">
+            @if($candidate->image)
             <img src="{{ asset('uploads/' . $candidate->image) }}" class="rounded-circle" width="120" height="120"
                 alt="Candidate Image">
+            @else
+                <img src="{{ asset('images/user.png') }}" class="rounded-circle" width="120" height="120">
+            @endif
         </div>
         <div class="col-md-10">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -51,7 +55,12 @@
                     <p class="mb-1"><strong>Address:</strong> {{ $candidate->address }}</p>
                 </div>
             </div>
-            <a href="{{ route('candidate.download', $candidate->id) }}" class="btn btn-primary">Download CV</a>
+            @if( $candidate->resume)
+                <div class="mb-3">
+                    <a href="{{ route('candidate.download', $candidate->id) }}" class="btn btn-primary">Download CV</a>
+                </div>
+            @endif
+
         </div>
     </div>
 @endsection
