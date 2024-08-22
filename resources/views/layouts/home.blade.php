@@ -52,56 +52,7 @@
     </div>
     <!-- Navbar End -->
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 hero-section">
-        <div id="carouselExampleCaptions" class="carousel slide overlay-bottom hero-section" data-bs-ride="carousel">
-            <div class="carousel-inner hero-section">
-                <div class="carousel-item active hero-section"> <!-- data-bs-interval="1000" -->
-                    <img src="{{ asset('images/back.webp') }}" class="d-block w-100 h-100" alt="">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center p-5">
-                        <h1 class="text-white font-weight-medium fw-semibold display-4 mb-3 hero-title">Find the Best
-                            Jobs in Egypt</h1>
-                        <p class="text-white fs-5 mb-5 hero-text">
-                            Searching for vacancies & career opportunities? WUZZUF helps you in your job search in Egypt
-                        </p>
-                        <div class="row height d-flex justify-content-center align-items-center w-100">
-                            <div class="col-md-8">
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input type="text" class="form-control" placeholder="Search Jobs (e.g. Senior PHP developer)">
-                                    <button class="btn btn-primary">Search</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-              <div class="carousel-item hero-section">
-                 <img src="{{ asset('images/hero1.webp') }}" class="d-block w-100 h-100" alt="" />
-                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center p-5">
-                    <h1 class="text-white font-weight-medium fw-semibold display-4 mb-3 hero-title">Hire Smarter. Grow Faster.</h1>
-                    <p class="text-white fs-5 mb-5 hero-text">
-                        With Egypt’s #1 Online Recruitment Platform
-                    </p>
-                    <a href="{{ route('login') }}" class="btn btn-primary">Start Hirimg Now</a>
-                 </div>
-              </div>
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
-        </div>
-    </div>
-    <!-- Carousel End -->
-
+    @yield('main')
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-body-dark text-white" style="background-color: #031431;">
