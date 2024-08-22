@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Candidate extends Model
 {
     use HasFactory;
+    protected $table = "candidates";
+    use HasFactory;
     // Define the relationship to user
     public function user()
     {

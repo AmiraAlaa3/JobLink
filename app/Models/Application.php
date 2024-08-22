@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
+    protected $table = 'applications';
     use HasFactory;
     // Define the relationship to candidate
     public function candidate()
