@@ -1,11 +1,7 @@
-<!-- resources/views/auth/login.blade.php -->
-@extends('layouts.app') --
+@extends('layouts.auth')
 
-@section('title', 'Login')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
-
-@section('content')
-    <div class="container" id="container">
+@section('main')
+    <div class="container login" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
                 <h1>Create Account</h1>
@@ -17,12 +13,12 @@
                 <span>or use your email for registration</span>
                 <input type="text" placeholder="Name" />
                 <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" /> 
+                <input type="password" placeholder="Password" />
                 <input type="password" placeholder="Confirm Password" />
                 <select name="role">
                     <option value="Role" selected>Select youe role</option>
-                    <option value="Role" >Employer</option>
-                    <option value="Role" >Employee</option>
+                    <option value="Role">Employer</option>
+                    <option value="Role">Employee</option>
                 </select><br>
                 <button>Sign In</button>
             </form>
@@ -38,7 +34,7 @@
                 <span>or use your account</span>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <a href="{{route('resetPass')}}">Forgot your password?</a>
+                <a href="{{ route('resetPass') }}">Forgot your password?</a>
                 <button>Log In</button>
             </form>
         </div>
@@ -57,17 +53,4 @@
             </div>
         </div>
     </div>
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-    
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-    
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
 @endsection

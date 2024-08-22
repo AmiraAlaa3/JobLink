@@ -3,21 +3,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
-
 h1 {
 	font-weight: bold;
 	margin: 0;
@@ -98,16 +83,17 @@ select{
 		margin: 8px 0;
 		width: 100%;
 }
-.container {
+.login.container {
 	background-color: #fff;
 	border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
 	width: 900px;
 	max-width: 100%;
 	min-height: 550px;
+    margin-bottom: 50px;
 }
 .form-container {
 	position: absolute;
@@ -140,7 +126,7 @@ select{
 		opacity: 0;
 		z-index: 1;
 	}
-	
+
 	50%, 100% {
 		opacity: 1;
 		z-index: 5;
@@ -216,4 +202,25 @@ select{
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+@media (max-width: 991.98px) {
+    .container-fluid.nav-bar, .nav-bar.container-sm, .nav-bar.container-md, .nav-bar.container-lg, .nav-bar.container-xl {
+        position: relative;
+        background: #ffffff;
+    }
+
+    .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+        color: black;
+    }
+
+    .navbar-toggler {
+        color: rgb(255, 255, 255) !important;
+        background-color: rgb(0, 29, 74);
+    }
+    .btn-outline-primary {
+        color:  rgb(11, 94, 215);
+        border-color:  rgb(11, 94, 215);
+        margin-left: 0 !important;
+    }
+
 }
