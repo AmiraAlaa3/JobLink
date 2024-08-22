@@ -1,11 +1,7 @@
-@extends('layouts.app');
+@extends('layouts.auth')
 
-@section('title','Login');
-
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
-
-@section('content')
-    <div class="container" id="container">
+@section('main')
+    <div class="container login" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
                 <h1>Create Account</h1>
@@ -57,17 +53,4 @@
             </div>
         </div>
     </div>
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
 @endsection
