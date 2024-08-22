@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('resetPassword', [LoginController::class, 'resetPass'])->name('resetPass');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 

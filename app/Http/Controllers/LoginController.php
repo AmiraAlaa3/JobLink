@@ -31,6 +31,9 @@ class LoginController extends Controller
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
     }
+    public function resetPass(){
+        return view('auth.resetPassword');
+    }
     public function logout()
     {
         Auth::guard('web')->logout();

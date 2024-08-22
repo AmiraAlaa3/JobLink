@@ -17,7 +17,7 @@
                 <span>or use your email for registration</span>
                 <input type="text" placeholder="Name" />
                 <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Password" /> 
                 <input type="password" placeholder="Confirm Password" />
                 <select name="role">
                     <option value="Role" selected>Select youe role</option>
@@ -38,7 +38,7 @@
                 <span>or use your account</span>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <a href="resetPassword.html">Forgot your password?</a>
+                <a href="{{route('resetPass')}}">Forgot your password?</a>
                 <button>Log In</button>
             </form>
         </div>
@@ -70,4 +70,4 @@
             container.classList.remove("right-panel-active");
         });
     </script>
-    @endsection
+@endsection
