@@ -183,9 +183,9 @@
             const selectedRole = document.getElementById('roleSelect').value;
             const name = document.getElementById('nameInput').value;
 
-            if (selectedRole === 'Employer') {
+            if (selectedRole === 'employer') {
                 window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
-            } else if (selectedRole === 'Candidate') {
+            } else if (selectedRole === 'candidate') {
                 window.location.href = `/candidate/login?name=${encodeURIComponent(name)}`;
             } else {
                 alert('Please select a valid role.');

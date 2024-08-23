@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+
+    protected $table = 'locations';
+    use HasFactory;
     public function jobPostings()
     {
         return $this->hasMany(JobPosting::class);
