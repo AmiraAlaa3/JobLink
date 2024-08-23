@@ -186,6 +186,10 @@
             if (selectedRole === 'employer') {
                 window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
             } else if (selectedRole === 'candidate') {
+
+            if (selectedRole === 'Employer') {
+                window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
+            } else if (selectedRole === 'Candidate') {
                 window.location.href = `/candidate/login?name=${encodeURIComponent(name)}`;
             } else {
                 alert('Please select a valid role.');

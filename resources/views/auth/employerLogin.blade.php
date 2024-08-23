@@ -4,6 +4,7 @@
     <div class="container login" id="container">
 
         <div class="form-container sign-in-container ">
+
             <form action="#" method="post" action="{{route('store')}}">
                 @csrf
                 <h1>Hi {{$name}},</h1>

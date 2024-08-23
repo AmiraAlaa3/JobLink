@@ -34,7 +34,6 @@ class LoginController extends Controller
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
     }
 
-
     public function store(Request $request, $id) {
         $candidate = Candidate::where('user_id', Auth::id())->firstOrFail();
         $employer = Employer::where('user_id', Auth::id())->firstOrFail();
@@ -80,7 +79,7 @@ class LoginController extends Controller
         }
         return null;
     }
-    
+   
 
     public function employerLogin(Request $request){
         $name = $request->query('name');
