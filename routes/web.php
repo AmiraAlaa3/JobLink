@@ -29,7 +29,11 @@ Route::get('resetPassword', [LoginController::class, 'resetPass'])->name('resetP
 Route::post('login', [LoginController::class, 'login']);
 Route::post('login/store', [LoginController::class, 'store'])->name('store');
 Route::get('employer/login', [LoginController::class, 'employerLogin'])->name('employerLogin');
+
+Route::post('employer/login', [LoginController::class, 'employerLogin'])->name('employerLogin');
 Route::get('candidate/login', [LoginController::class, 'candidateLogin'])->name('candidateLogin');
+Route::post('candidate/login', [LoginController::class, 'candidateLogin'])->name('candidateLogin');
+
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Public Route

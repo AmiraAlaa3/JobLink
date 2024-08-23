@@ -3,7 +3,8 @@
 @section('main')
     <div class="container login" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="#" method="post" action="{{route('store')}}">
+                @csrf
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -11,14 +12,13 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" name="name" id="nameInput"/>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" name="email"/>
+                <input type="password" placeholder="Password" name="password"/>
                 <input type="password" placeholder="Confirm Password" />
                 <select name="role" id="roleSelect">
                     <option value="Role" selected>Select youe role</option>
-                    <option value="Employer">Employer</option>
-                    <option value="Candidate">Candidate</option>
+                    <option value="employer">Employer</option>
+                    <option value="candidate">Candidate</option>
                 </select><br>
                 <button type="button" onclick="redirectToRole()">Sign In</button>
             </form>

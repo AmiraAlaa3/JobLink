@@ -183,6 +183,10 @@
             const selectedRole = document.getElementById('roleSelect').value;
             const name = document.getElementById('nameInput').value;
 
+            if (selectedRole === 'employer') {
+                window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
+            } else if (selectedRole === 'candidate') {
+
             if (selectedRole === 'Employer') {
                 window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
             } else if (selectedRole === 'Candidate') {
