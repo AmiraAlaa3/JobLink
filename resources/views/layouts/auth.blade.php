@@ -178,6 +178,19 @@
         signInButton.addEventListener('click', () => {
             container.classList.remove("right-panel-active")
         })
+
+        function redirectToRole() {
+            const selectedRole = document.getElementById('roleSelect').value;
+            const name = document.getElementById('nameInput').value;
+
+            if (selectedRole === 'Employer') {
+                window.location.href = `/employer/login?name=${encodeURIComponent(name)}`;
+            } else if (selectedRole === 'Candidate') {
+                window.location.href = `/candidate/login?name=${encodeURIComponent(name)}`;
+            } else {
+                alert('Please select a valid role.');
+            }
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">

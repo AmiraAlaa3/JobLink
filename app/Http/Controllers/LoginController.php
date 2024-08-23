@@ -31,6 +31,21 @@ class LoginController extends Controller
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
     }
+
+    public function store(){
+
+    }
+
+    public function employerLogin(Request $request){
+        $name = $request->query('name');
+        return view('auth.employerLogin', compact('name'));
+    }
+
+    public function candidateLogin(Request $request){
+        $name = $request->query('name');
+        return view('auth.candidateLogin', compact('name'));
+    }
+
     public function resetPass(){
         return view('auth.resetPassword');
     }
