@@ -11,16 +11,16 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Name" name="name" id="nameInput"/>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <input type="password" placeholder="Confirm Password" />
-                <select name="role">
+                <select name="role" id="roleSelect">
                     <option value="Role" selected>Select youe role</option>
-                    <option value="Role">Employer</option>
-                    <option value="Role">Employee</option>
+                    <option value="Employer">Employer</option>
+                    <option value="Candidate">Candidate</option>
                 </select><br>
-                <button>Sign In</button>
+                <button type="button" onclick="redirectToRole()">Sign In</button>
             </form>
         </div>
         <div class="form-container sign-in-container">

@@ -27,6 +27,9 @@ use App\Http\Controllers\ApplicationController;
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('resetPassword', [LoginController::class, 'resetPass'])->name('resetPass');
 Route::post('login', [LoginController::class, 'login']);
+Route::post('login/store', [LoginController::class, 'store'])->name('store');
+Route::get('employer/login', [LoginController::class, 'employerLogin'])->name('employerLogin');
+Route::get('candidate/login', [LoginController::class, 'candidateLogin'])->name('candidateLogin');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Public Route
