@@ -30,3 +30,5 @@ Route::get('/jobs', [JobPostingController::class, 'index'])->name('jobs.index');
 Route::get('/jobs/{id}', [JobPostingController::class, 'show'])->name('jobs.show');
 Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('apply');
 Route::post('/apply/{job}', [JobApplicationController::class, 'store']);
+Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->name('jobs.apply');
+Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('jobs.show');

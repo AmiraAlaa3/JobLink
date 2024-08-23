@@ -3,32 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Apply</title>
 </head>
 <body>
-    <h1>welcome to apply</h1>
-    <h1>Apply for {{ $job->title }}</h1>
+    
+<div class="container">
+    <h1 class="text-center">Apply for {{ $job->title }}</h1>
 
-    <form action="{{ route('apply', $job->id) }}" method="POST">
+    <form action="{{ route('jobs.show', $job->id) }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <label for="name" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+        <div class="form-group">
+            <label for="cv">Upload CV:</label>
+            <input type="file" class="form-control" id="cv" name="cv" required>
         </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label">Your Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="resume" class="form-label">Upload Resume</label>
-            <input type="file" class="form-control" id="resume" name="resume" required>
-        </div>
-
         <button type="submit" class="btn btn-primary">Submit Application</button>
     </form>
+</div>
 
 </body>
 </html>

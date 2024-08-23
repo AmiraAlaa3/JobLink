@@ -12,7 +12,7 @@ class Application extends Model
     // Define the relationship to candidate
     public function candidate()
     {
-        return $this->belongsTo(Candidate::class);
+        return $this->belongsTo(Candidate::class, 'user_id', 'user_id');
     }
 
     // Define the relationship to JobPosting

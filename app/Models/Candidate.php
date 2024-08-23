@@ -19,6 +19,6 @@ class Candidate extends Model
     // Define the relationship to Application
     public function applications()
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(Application::class, 'user_id', 'user_id');
     }
 }
