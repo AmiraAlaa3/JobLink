@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class JobPosting extends Model
 {
     use HasFactory;
+
+    protected $table = 'job_postings';
+
+    use HasFactory;
      // Define the relationship to Employer
      public function employer()
      {

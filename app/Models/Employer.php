@@ -9,6 +9,9 @@ class Employer extends Model
 {
     use HasFactory;
 
+    use HasFactory;
+
+    protected $table = 'employers';
     // Define the relationship to User
     public function user()
     {
