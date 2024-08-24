@@ -39,10 +39,16 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 
 // Candidate Routes - Protected by 'auth' middleware
 Route::middleware('auth')->group(function () {
+    // candidate acount
     Route::get('candidate/account', [CandidateController::class, 'account'])->name('candidate_account');
     Route::get('candidate/profile/edit', [CandidateController::class, 'profile_edit'])->name('candidate_profile_edit');
     Route::put('candidate/profile/update/{id}', [CandidateController::class, 'profile_update'])->name('candidate_profile_update');
     Route::get('/candidate/{id}/download', [CandidateController::class, 'downloadCV'])->name('candidate.download');
+    // jobs and apply job
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+    Route::post('/apply/{job}', [JobApplicationController::class, 'store']);
+    Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('job.apply');
 });
 // Employer Routes - Protected by 'auth' middleware
 Route::middleware('auth')->group(function () {
@@ -61,12 +67,4 @@ Route::middleware('auth')->group(function () {
 Route::get('hi',function(){
     return view('auth.registar');
 });
-
-
-Route::get('/jobs', [JobPostingController::class, 'index'])->name('jobs.index');
-Route::get('/jobs/{id}', [JobPostingController::class, 'show'])->name('jobs.show');
-Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('apply');
-Route::post('/apply/{job}', [JobApplicationController::class, 'store']);
-Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->name('jobs.apply');
-Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
