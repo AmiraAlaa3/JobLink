@@ -1,23 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Candidate;
 use App\Models\JobPosting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobPostingController extends Controller
 {
-    public function index()
-    {
-        $jobs = JobPosting::all(); // or you can use pagination: JobPosting::paginate(10);
-
-        return view('jobs.index', compact('jobs'));
-    }
-    public function show($id)
-    {
-        // Eager load employer and location relationships
-        $job = JobPosting::with(['employer', 'location', 'applications','category'])->findOrFail($id);
-        $applicationCount = $job->applications->count();
-
-        return view('jobs.show', compact('job','applicationCount'));
-    }
+    
 }

@@ -34,7 +34,7 @@ class LoginController extends Controller
                 case 'employer':
                     return redirect()->intended(route('employer_dashboard'));
                 case 'candidate':
-                    return redirect()->intended(route('candidate_account'));
+                    return redirect()->intended(route('jobs.index'));
                 default:
                     Auth::logout();
                     return redirect()->back()->withErrors(['role' => 'Unauthorized role']);
@@ -61,6 +61,9 @@ class LoginController extends Controller
             'password' => bcrypt($request->password),
             'role' => $request->role,
         ]);
+
+
+
         // Additional fields for candidate or employer
         if ($request->role == 'candidate') {
             // Handle the date of birth
