@@ -20,7 +20,7 @@
                     <option value="Employer">Employer</option>
                     <option value="Candidate">Candidate</option>
                 </select><br>
-                <a href="{{route('store')}}"><button type="button" onclick="redirectToRole()">Sign In</button></a>
+                <a href="{{route('login.store')}}"><button type="button" onclick="redirectToRole()">Sign In</button></a>
 
             </form>
         </div>
