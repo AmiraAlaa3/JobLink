@@ -12,6 +12,13 @@ class Employer extends Model
     use HasFactory;
 
     protected $table = 'employers';
+    protected $fillable = [
+        'company_name',
+        'address',
+        'phone_number',
+        'company_logo',
+        'user_id',
+    ];
     // Define the relationship to User
     public function user()
     {
