@@ -92,7 +92,7 @@ select{
 	overflow: hidden;
 	width: 900px;
 	max-width: 100%;
-	min-height: 550px;
+	min-height: 600px;
     margin-bottom: 50px;
 }
 .form-container {
@@ -222,5 +222,9 @@ select{
         border-color:  rgb(11, 94, 215);
         margin-left: 0 !important;
     }
-
+}
+#DOB select{
+    width: 25%;
+    padding: 12px 8px;
+    margin-right: 26px;
 }
