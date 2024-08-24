@@ -74,30 +74,44 @@
     </form>
 
     <!-- Job Listings Table -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Job Title</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse ($jobs as $job)
-                <tr>
-                    <td>{{ $job->title }}</td>
-                    <td>{{ $job->category->name }}</td>
-                    <td>{{ $job->location->name }}</td>
-                    <td>{{ $job->description }}</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4">No jobs found.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+    <div class="container-fluid p-5 bg-light">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <h2 class="text-center fs-1 fw-light text-dark">Featured Jobs</h2>
+                <div class="row my-5">
+                    @foreach ($jobs as $job)
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-3 text-center p-3">
+                                        @if ($job->employer->company_logo)
+                                            <img src="{{ asset('uploads/' . $job->employer->company_logo) }}"
+                                                alt="company_logo" class="company-logo img-fluid" width="100px">
+                                        @else
+                                            <img src="{{ asset('images/company-placeholder.png') }}"
+                                                alt="company_logo" class="company-logo img-fluid" width="100px">
+                                        @endif
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $job->title }}</h5>
+                                            <p class="card-text">
+                                                <strong>Company:</strong> {{ $job->employer->company_name }}<br>
+                                                <strong>Location:</strong> {{ $job->location->name }}<br>
+                                                <strong>Type:</strong> {{ $job->work_type }}<br>
+                                                <strong>Posted on:</strong> {{ $job->created_at->format('M d, Y') }}
+                                            </p>
+                                            <a href="{{ route('jobs.show', ['id' => $job->id]) }}" class="btn btn-primary">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

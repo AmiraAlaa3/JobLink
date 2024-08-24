@@ -41,9 +41,9 @@
 
                     <h4>{{ $job->title }}</h4>
                     <h4>{{ $job->work_type }}</h4>
-                    <h4>{{ $job->created_at->diffInDays(now()) }} days ago</h4>
+                    <h4>{{$job->created_at->diffInDays(now()) }} days ago</h4>
                     <p>{{ $applicationCount }} {{ Str::plural('application', $applicationCount) }}</p>
-                    <a href="{{ route('apply', $job->id) }}" class="btn btn-info">Apply</a>
+                    <a href="{{ route('jobs.apply', $job->id) }}" class="btn btn-info">Apply</a>
                 </div>
                 <div class="right">
                     @if($job->employer->logo)
