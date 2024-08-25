@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Candidate extends Model
 {
     use HasFactory;
+    protected $table = "candidates";
+    use HasFactory;
+    protected $fillable = [
+        'name',
+        'email',
+        'phone_number',
+        'date_of_birth',
+        'resume',
+        'image',
+        'user_id',
+    ];
     // Define the relationship to user
     public function user()
     {
@@ -17,6 +28,6 @@ class Candidate extends Model
     // Define the relationship to Application
     public function applications()
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(Application::class, 'user_id', 'user_id');
     }
 }
