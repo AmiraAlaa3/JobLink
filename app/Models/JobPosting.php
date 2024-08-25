@@ -31,4 +31,20 @@ class JobPosting extends Model
      {
          return $this->hasMany(Application::class);
      }
+
+     protected $fillable = [
+        'title',
+        'description',
+        'skills_required',
+        'salary_range',
+        'location_id',
+        'work_type',
+        'application_deadline',
+        'category_id',
+        'employer_id',  
+    ];
+
+    protected $casts = [
+        'application_deadline' => 'date',
+    ];
 }
