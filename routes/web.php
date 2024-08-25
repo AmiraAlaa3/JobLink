@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     // jobs and apply job
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
-    Route::post('/apply/{job}', [JobApplicationController::class, 'store']);
+    Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('application.store');
     Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('job.apply');
 });
 // Employer Routes - Protected by 'auth' middleware
