@@ -14,11 +14,12 @@ class ApplicationController extends Controller
     //
     public function create(JobPosting $job)
     {
-
-        return view('candidates.apply', compact('job'));
+        $user = Auth::user();
+        $candidate = Candidate::where('user_id', $user->id)->first();
+        return view('candidates.apply', compact('job','candidate'));
     }
-   
-       
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -30,20 +31,20 @@ class ApplicationController extends Controller
             'cv' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        $user = auth()->user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-    
-        
-        $candidate = $user->candidate; 
-        $candidate->phone_number = $request->phone;
-        $candidate->save();
+        // $user = auth()->user();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->save();
 
-        
+
+        // $candidate = $user->candidate;
+        // $candidate->phone_number = $request->phone;
+        // $candidate->save();
+
+
         $cvPath = $request->file('cv')->store('cvs', 'public');
 
-       
+
         Application::create([
             'candidate_id' => $request->candidate_id,
             'job_posting_id' => $request->job_posting_id,

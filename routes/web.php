@@ -51,26 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/apply/{job}', [ApplicationController::class, 'create'])->name('job.apply');
 });
 // Employer Routes - Protected by 'auth' middleware
-Route::middleware('auth')->group(function () {
-    Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer_dashboard');
-    Route::get('employer/account', [EmployerController::class, 'account'])->name('employer_account');
-    Route::get('employer/profile/edit', [EmployerController::class, 'profile_edit'])->name('employer_profile_edit');
-    Route::put('employer/profile/update/{id}', [EmployerController::class, 'profile_update'])->name('employer_profile_update');
-    Route::get('employer/job/create', [JobPostingController::class, 'create'])->name('employer_job_create');
-    Route::post('employer/job/store', [JobPostingController::class, 'store'])->name('employer_job_store');
-    Route::get('employer/job/{id}/edit', [JobPostingController::class, 'edit'])->name('employer_job_edit');
-    Route::put('employer/job/{id}', [JobPostingController::class, 'update'])->name('employer_job_update');
-    Route::delete('employer/job/{id}', [JobPostingController::class, 'destroy'])->name('employer_job_delete');
-    Route::get('employer/applications', [JobApplicationController::class, 'index'])->name('employer_applications');
-});
 
 Route::get('hi',function(){
     return view('auth.registar');
 });
 
-/*
-Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
-Route::get('/jobs/{id}', [JobPostingController::class, 'show'])->name('jobs.show');
-Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->name('jobs.apply');
-Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('jobs.apply.store');
-*/
