@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 use App\Models\JobPosting;
 use App\Models\Category;
 use App\Models\Location;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -13,6 +15,10 @@ class JobController extends Controller
         // Fetch all categories and locations for filters
         $categories = Category::all();
         $locations = Location::all();
+
+        $user = Auth::user();
+        $candidate = Candidate::where('user_id', $user->id)->first();
+
 
         // Start query to fetch job postings
         $query = JobPosting::query();
@@ -47,7 +53,21 @@ class JobController extends Controller
         // Fetch the filtered job postings
         $jobs = $query->with('category', 'location')->get();
 
-        return view('jobs.index', compact('jobs', 'categories', 'locations'));
+        return view('candidates.index', compact('jobs', 'categories', 'locations','candidate'));
     }
+
+    public function show($id)
+    {
+        // Eager load employer and location relationships
+        $job = JobPosting::with(['employer', 'location', 'applications','category'])->findOrFail($id);
+        $applicationCount = $job->applications->count();
+        $user = Auth::user();
+        $candidate = Candidate::where('user_id', $user->id)->first();
+
+        return view('candidates.show', compact('job','applicationCount','candidate'));
+    }
+
+
+
 }
 ?>

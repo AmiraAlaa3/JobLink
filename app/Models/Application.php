@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $table = 'applications';
+    protected $table = "applications";
+    protected $fillable = ['candidate_id', 'job_posting_id', 'status', 'cv'];
     use HasFactory;
     // Define the relationship to candidate
     public function candidate()
