@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Application;
 use App\Models\JobPosting;
 use App\Models\Candidate;
+use Illuminate\Support\Facades\Auth;
+
 class ApplicationController extends Controller
 {
     //
@@ -18,9 +20,9 @@ class ApplicationController extends Controller
     {
         {
             $request->validate([
-                'cv' => 'required|file|mimes:pdf,doc,docx|max:2048', 
+                'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
             ]);
-    
+
 
             if ($request->hasFile('cv')) {
                 $file = $request->file('cv');
@@ -34,19 +36,19 @@ class ApplicationController extends Controller
             }
 
             Application::create([
-                'user_id' => $candidate->user_id, 
+                'user_id' => $candidate->user_id,
                 'job_id' => $job->id,
                 'cv_path' => $filePath,
             ]);
-    
+
             return redirect()->route('jobs.show', ['id' => $job->id])
             ->with('success', 'Application submitted successfully!');
-    
-    
+
+
             return redirect()->route('jobs.show', $job->id)
                              ->with('success', 'Application submitted successfully!');
         }
     }
-    
+
 
 }
