@@ -47,8 +47,8 @@ Route::middleware('auth')->group(function () {
     // jobs and apply job
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
-    Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('application.store');
-    Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('job.apply');
+    Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+    Route::get('/apply/{job}', [ApplicationController::class, 'create'])->name('job.apply');
 });
 // Employer Routes - Protected by 'auth' middleware
 Route::middleware('auth')->group(function () {
@@ -68,3 +68,9 @@ Route::get('hi',function(){
     return view('auth.registar');
 });
 
+/*
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('/jobs/{id}', [JobPostingController::class, 'show'])->name('jobs.show');
+Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->name('jobs.apply');
+Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('jobs.apply.store');
+*/

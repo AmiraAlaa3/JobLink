@@ -14,35 +14,44 @@ class ApplicationController extends Controller
     //
     public function create(JobPosting $job)
     {
-        return view('candidates.show', compact('job'));
+
+        return view('candidates.apply', compact('job'));
     }
-    public function store(Request $request, JobPosting $job)
+   
+       
+    public function store(Request $request)
     {
-            dd($request->all());
-            $request->validate([
-                'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
-            ]);
+        $request->validate([
+            'candidate_id' => 'required|exists:candidates,id',
+            'job_posting_id' => 'required|exists:job_postings,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:15',
+            'cv' => 'required|mimes:pdf,doc,docx|max:2048',
+        ]);
 
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+    
+        
+        $candidate = $user->candidate; 
+        $candidate->phone_number = $request->phone;
+        $candidate->save();
 
-            if ($request->hasFile('cv')) {
-                $file = $request->file('cv');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $filePath = $file->storeAs('cvs', $filename, 'public');
-            }
+        
+        $cvPath = $request->file('cv')->store('cvs', 'public');
 
-            $candidate = Candidate::where('user_id', Auth::id())->first();
-            if (!$candidate) {
-                return redirect()->back()->with('error', 'You are not eligible to apply for this job.');
-            }
+       
+        Application::create([
+            'candidate_id' => $request->candidate_id,
+            'job_posting_id' => $request->job_posting_id,
+            'status' => 'pending',
+            'cv' => $cvPath,
+        ]);
 
-            Application::create([
-                'candidate_id' => $candidate->user_id,
-                'job_posting_id' => $job->id,
-                'cv' => $filePath,
-            ]);
-
-            return redirect()->route('jobs.show', ['id' => $job->id])
-            ->with('success', 'Application submitted successfully!');
+        return redirect()->route('jobs.index')->with('success', 'Your application has been submitted successfully!');
     }
 
 
