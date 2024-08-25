@@ -28,6 +28,6 @@ class Candidate extends Model
     // Define the relationship to Application
     public function applications()
     {
-        return $this->hasMany(Application::class, 'user_id', 'user_id');
+        return $this->hasMany(Application::class, 'candidate_id', 'user_id');
     }
 }
