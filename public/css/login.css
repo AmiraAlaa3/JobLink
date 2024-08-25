@@ -2,6 +2,13 @@
 /* Style for login */
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+body {
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
 
 h1 {
 	font-weight: bold;
@@ -93,7 +100,6 @@ select{
 	width: 900px;
 	max-width: 100%;
 	min-height: 600px;
-    margin-bottom: 50px;
 }
 .form-container {
 	position: absolute;

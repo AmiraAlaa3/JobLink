@@ -14,11 +14,11 @@ class ApplicationController extends Controller
     //
     public function create(JobPosting $job)
     {
-        return view('jobs.show', compact('job'));
+        return view('candidates.show', compact('job'));
     }
     public function store(Request $request, JobPosting $job)
     {
-        {
+            dd($request->all());
             $request->validate([
                 'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
             ]);
@@ -36,18 +36,13 @@ class ApplicationController extends Controller
             }
 
             Application::create([
-                'user_id' => $candidate->user_id,
-                'job_id' => $job->id,
-                'cv_path' => $filePath,
+                'candidate_id' => $candidate->user_id,
+                'job_posting_id' => $job->id,
+                'cv' => $filePath,
             ]);
 
             return redirect()->route('jobs.show', ['id' => $job->id])
             ->with('success', 'Application submitted successfully!');
-
-
-            return redirect()->route('jobs.show', $job->id)
-                             ->with('success', 'Application submitted successfully!');
-        }
     }
 
 

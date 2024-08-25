@@ -7,11 +7,11 @@
     <title>Apply</title>
 </head>
 <body>
-    
+
 <div class="container">
     <h1 class="text-center">Apply for {{ $job->title }}</h1>
 
-    <form action="{{ route('jobs.show', $job->id) }}" method="POST">
+    <form action="{{ route('application.store', $job->id) }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="cv">Upload CV:</label>
