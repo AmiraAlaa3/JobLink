@@ -1,14 +1,18 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Category;
+use App\Http\Controllers\EmployerDashboardController;
+use App\Http\Controllers\Application;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +54,36 @@ Route::middleware('auth')->group(function () {
     Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
     Route::get('/apply/{job}', [ApplicationController::class, 'create'])->name('job.apply');
 });
-// Employer Routes - Protected by 'auth' middleware
+
 
 Route::get('hi',function(){
     return view('auth.registar');
 });
+
+//Job Posting Routes - protected by auth
+
+
+Route::middleware('auth')->group(function () {
+    // Route::get('/employer/account', [JobPostingController::class, 'account'])->name('employer_account');
+    Route::get('/jobs', [JobPostingController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/create', [JobPostingController::class, 'create'])->name('jobs.create');
+    Route::post('/jobs', [JobPostingController::class, 'store'])->name('jobs.store');
+    Route::get('/jobs/{job}', [JobPostingController::class, 'show'])->name('jobs.show');
+    Route::get('/jobs/{job}/edit', [JobPostingController::class, 'edit'])->name('jobs.edit');
+    Route::put('/jobs/{job}', [JobPostingController::class, 'update'])->name('jobs.update');
+    Route::delete('/jobs/{job}', [JobPostingController::class, 'destroy'])->name('jobs.destroy');
+    Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
+    Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
+
+});
+
+// Route of dashboard
+// Route::middleware('auth')->group(function () {
+//     Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
+//     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
+
+// });
+
+
+
 
