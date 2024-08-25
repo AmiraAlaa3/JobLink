@@ -53,7 +53,7 @@ class JobController extends Controller
         // Fetch the filtered job postings
         $jobs = $query->with('category', 'location')->get();
 
-        return view('jobs.index', compact('jobs', 'categories', 'locations','candidate'));
+        return view('candidates.index', compact('jobs', 'categories', 'locations','candidate'));
     }
 
     public function show($id)
@@ -64,10 +64,10 @@ class JobController extends Controller
         $user = Auth::user();
         $candidate = Candidate::where('user_id', $user->id)->first();
 
-        return view('jobs.show', compact('job','applicationCount','candidate'));
+        return view('candidates.show', compact('job','applicationCount','candidate'));
     }
 
-    
+
 
 }
 ?>
