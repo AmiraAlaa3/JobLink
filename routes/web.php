@@ -66,14 +66,14 @@ Route::get('hi',function(){
 
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/employer/account', [JobPostingController::class, 'account'])->name('employer_account');
-    Route::get('/jobs', [JobPostingController::class, 'index'])->name('jobs.index');
-    Route::get('/jobs/create', [JobPostingController::class, 'create'])->name('jobs.create');
-    Route::post('/jobs', [JobPostingController::class, 'store'])->name('jobs.store');
-    Route::get('/jobs/{job}', [JobPostingController::class, 'show'])->name('jobs.show');
-    Route::get('/jobs/{job}/edit', [JobPostingController::class, 'edit'])->name('jobs.edit');
-    Route::put('/jobs/{job}', [JobPostingController::class, 'update'])->name('jobs.update');
-    Route::delete('/jobs/{job}', [JobPostingController::class, 'destroy'])->name('jobs.destroy');
+    Route::get('/job_posting', [JobPostingController::class,'index'])->name('job_posting.index');
+    Route::get('/job_posting/create', [JobPostingController::class,'create'])->name('job_posting.create');
+    Route::post('/job_posting', [JobPostingController::class, 'store'])->name('job_posting.store');
+    Route::get('/job_posting/{job}', [JobPostingController::class, 'show'])->name('job_posting.show');
+
+    Route::get('/job_posting/{job}/edit', [JobPostingController::class, 'edit'])->name('job_posting.edit');
+    Route::put('/job_posting/{job}', [JobPostingController::class, 'update'])->name('job_posting.update');
+    Route::delete('/job_posting/{job}', [JobPostingController::class, 'destroy'])->name('job_posting.destroy');
     Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
 

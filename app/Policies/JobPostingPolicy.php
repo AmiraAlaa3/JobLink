@@ -38,7 +38,7 @@ class JobPostingPolicy
     public function update(User $user, JobPosting $jobPosting): bool
     {
         //
-        return $user->id === $jobPosting->employer_id;
+         return $user->id === $jobPosting->employer->user_id;
     }
 
     /**
@@ -47,7 +47,7 @@ class JobPostingPolicy
     public function delete(User $user, JobPosting $jobPosting): bool
     {
         //
-        return $user->id === $jobPosting->employer_id;
+        return $user->id === $jobPosting->employer->user_id;
 
     }
 
