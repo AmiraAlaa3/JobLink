@@ -1,5 +1,3 @@
-{{-- @extends('layouts.app') --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +19,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>@yield('title', 'Wuzzuf')</title>
 </head>
@@ -66,32 +66,48 @@
         </div>
     </nav>
   
+   
+  
     {{-- @section('content') --}}
-    <div class="container m-5 bg-light" >
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-        <a href="{{ route('jobs.create') }}" class="btn btn-primary mb-3">Create New Job</a>
-    </div>
-    <h2 class="text-center">Your Job Postings</h2>
-    <div class="row">
-        @foreach($jobs as $job)
-        <div class="col-md-4">
-            <div class="card mb-4">
+    <div class="container m-5 bg-light">
+    <div class="row justify-content-md-center">
+        <!-- Jobs Box -->
+        <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card text-white bg-primary shadow">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $job->title }}</h5>
-                    <p class="card-text">{{ Str::limit($job->description, 100) }}</p>
-                    <a href="{{ route('jobs.show', $job) }}" class="btn btn-info">View Job</a>
-                    <a href="{{ route('jobs.edit', $job) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('jobs.destroy', $job) }}" method="POST" class="d-inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <div class="row">
+                        <div class="col-3">
+                            <i class="fas fa-briefcase fa-4x"></i>
+                        </div>
+                        <div class="col-9 text-right">
+                            <div class="h1 mb-0">{{ $jobCount }}</div>
+                            <div class="text-uppercase">Jobs Posted</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        @endforeach
+
+        <!-- Applications Box -->
+        <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card text-white bg-success shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <i class="fas fa-file-alt fa-4x"></i>
+                        </div>
+                        <div class="col-9 text-right">
+                            <div class="h1 mb-0">{{ $applicationCount }}</div>
+                            <div class="text-uppercase">Applications Received</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+    {{-- @endsection --}}
+    
 {{-- @endsection --}}
 <footer class="text-center text-lg-start bg-body-dark text-white" style="background-color: #031431;">
     <!-- Section: Social media -->
@@ -204,4 +220,3 @@ integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0
 </script>
 </body>
 </html>
-

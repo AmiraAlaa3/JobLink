@@ -32,7 +32,7 @@ class LoginController extends Controller
                 case 'admin':
                     return redirect()->intended(route('admin_dashboard'));
                 case 'employer':
-                    return redirect()->intended(route('employer_dashboard'));
+                    return redirect()->intended(route('employer.dashboard'));
                 case 'candidate':
                     return redirect()->intended(route('jobs.index'));
                 default:
