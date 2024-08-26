@@ -22,8 +22,8 @@
                     <td>{{ $application->candidate->user->email    }}</td>
                     <td>{{ $application->candidate->phone_number  }}</td>
                     <td>
-                         @if($application->candidate && $application->cv)
-                          <a href="{{ asset('storage/' . $application->cv) }}" target="_blank">View CV</a>
+                        @if($application->candidate && $application->cv)
+                            <a href="{{ asset('storage/' . $application->cv) }}" target="_blank">View CV</a>
                             @else
                                 N/A
                             @endif

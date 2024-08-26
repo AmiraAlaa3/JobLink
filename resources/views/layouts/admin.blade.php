@@ -44,7 +44,7 @@
                         <a class="nav-link" href={{ route('admin.jobs') }}>All Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Account</a>
+                        <a class="nav-link" href="{{ route('admin.admins') }}">Admins</a>
                     </li>
 
                 </ul>

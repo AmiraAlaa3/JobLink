@@ -45,4 +45,31 @@ class AdminController extends Controller
         $admin = Auth::user();
         return view('admin.applicants', compact('job', 'applicants','admin'));
     }
+
+
+    public function indexAdmins(){
+        $admins = User::where('role', 'admin')->get();
+        return view('admin.addAdmins', compact('admins'));
+    }
+
+
+    public function storeAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+    
+        $admin = new User;  // Assuming User model is used
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = bcrypt($request->password);
+        $admin->role = 'admin';  // Set role as admin
+        $admin->save();
+    
+        return redirect()->route('admin.admins')->with('success', 'Admin added successfully.');
+    }
+    
+
 }
