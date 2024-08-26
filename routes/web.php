@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::get('candidate/profile/edit', [CandidateController::class, 'profile_edit'])->name('candidate_profile_edit');
     Route::put('candidate/profile/update/{id}', [CandidateController::class, 'profile_update'])->name('candidate_profile_update');
     Route::get('/candidate/{id}/download', [CandidateController::class, 'downloadCV'])->name('candidate.download');
+    Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
+    Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
     // jobs and apply job
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
@@ -87,10 +89,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
 });
 
-// Route of candidate application
-Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
-Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
-
 
 //admin Routes - protected by auth
 Route::middleware('auth')->group(function () {
@@ -103,7 +101,7 @@ Route::middleware('auth')->group(function () {
 //     Route::put('/admin/candidates/{candidate}', [AdminController::class, 'updateCandidate'])->name('admin.update_candidate');
 //     Route::delete('/admin/candidates/{candidate}', [AdminController::class, 'destroyCandidate'])->name('admin.destroy_candidate');
 //
- });
+});
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
