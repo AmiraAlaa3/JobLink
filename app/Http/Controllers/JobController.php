@@ -12,7 +12,7 @@ class JobController extends Controller
 {
     public function index(Request $request)
     {
-        // Fetch all categories and locations for filters
+        
         $categories = Category::all();
         $locations = Location::all();
 
