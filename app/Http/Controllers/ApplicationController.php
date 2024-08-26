@@ -56,8 +56,20 @@ class ApplicationController extends Controller
         return redirect()->route('jobs.index')->with('success', 'Your application has been submitted successfully!');
     }
 
+    public function destroy($id)
+    {
+        $application = Application::findOrFail($id);
+        $user = Auth::user();
+        $candidate = Candidate::where('user_id', $user->id)->first();
+        if (!$candidate) {
+            return redirect()->back()->with('error', 'Unauthorized action.');
+        }
 
-
+        $application->delete();
+    
+        return redirect()->route('candidate_applications')->with('success', 'Application deleted successfully.');
+    }
+    
 
 
 }

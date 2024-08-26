@@ -11,9 +11,16 @@
             <div class="card border-light shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title text-capitalize mb-0">{{ $application->jobPosting->title }}</h5>
-                    <a class="btn btn-link text-danger" aria-label="Close">
-                        <i class="fa-solid fa-x"></i>
-                    </a>
+                    @if ($application->status === 'pending')
+                    <form action="{{ route('applications.destroy', $application->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-link text-danger" aria-label="Close">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </form>
+                @endif
+                
                 </div>
                 <div class="card-body">
                     <p class="text-muted"><strong>Status:</strong> {{ $application->status }}</p>
@@ -28,6 +35,7 @@
         @endforeach
     </div>
 </div>
+
 
 
 

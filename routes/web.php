@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
 
 // Route of candidate application
 Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
+Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
 
 
 
