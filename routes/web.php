@@ -90,10 +90,18 @@ Route::middleware('auth')->group(function () {
 });
 
 
+//admin Routes - protected by auth
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
+    Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
 
-// admin
-Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
-Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
+//     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+//     Route::get('/admin/candidates', [AdminController::class, 'indexCandidates'])->name('admin.candidates');
+//     Route::get('/admin/candidates/{candidate}', [AdminController::class, 'editCandidate'])->name('admin.edit_candidate');
+//     Route::put('/admin/candidates/{candidate}', [AdminController::class, 'updateCandidate'])->name('admin.update_candidate');
+//     Route::delete('/admin/candidates/{candidate}', [AdminController::class, 'destroyCandidate'])->name('admin.destroy_candidate');
+//
+});
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
