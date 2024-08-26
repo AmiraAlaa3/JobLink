@@ -9,6 +9,8 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EmployerAccountController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +55,9 @@ Route::middleware('auth')->group(function () {
 // Employer Routes - Protected by 'auth' middleware
 Route::middleware('auth')->group(function () {
     Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer_dashboard');
-    Route::get('employer/account', [EmployerController::class, 'account'])->name('employer_account');
-    Route::get('employer/profile/edit', [EmployerController::class, 'profile_edit'])->name('employer_profile_edit');
-    Route::put('employer/profile/update/{id}', [EmployerController::class, 'profile_update'])->name('employer_profile_update');
+    Route::get('employer/account', [EmployerAccountController::class, 'account'])->name('employer_account');
+    Route::get('employer/profile/edit', [EmployerAccountController::class, 'profile_edit'])->name('Employer_profile_edit');
+    Route::put('employer/profile/update/{id}', [EmployerAccountController::class, 'profile_update'])->name('employer_profile_update');
     Route::get('employer/job/create', [JobPostingController::class, 'create'])->name('employer_job_create');
     Route::post('employer/job/store', [JobPostingController::class, 'store'])->name('employer_job_store');
     Route::get('employer/job/{id}/edit', [JobPostingController::class, 'edit'])->name('employer_job_edit');
