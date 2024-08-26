@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 use App\Models\JobPosting;
 use App\Models\Application;
 use App\Models\Candidate;
+use App\Models\Employer;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    //
     public function index()
     {
-        
+
+        $admin = Auth::user();
+
         $jobPostings = JobPosting::with(['employer', 'location'])
-                        ->withCount('applications') 
+                        ->withCount('applications')
                         ->get();
 
-        return view('admin.index', compact('jobPostings'));
+        return view('admin.index', compact('jobPostings','admin'));
     }
     public function dashboard()
 {
@@ -34,12 +37,12 @@ class AdminController extends Controller
     return view('admin.dashboard', compact('applicationsCount', 'candidatesCount', 'jobsCount', 'categoriesCount', 'employersCount', 'locationsCount'));
 }
 
-    
+
     public function showApplicants($jobId)
     {
         $job = JobPosting::findOrFail($jobId);
         $applicants = $job->applications()->with('candidate.user')->get();
-
-        return view('admin.applicants', compact('job', 'applicants'));
+        $admin = Auth::user();
+        return view('admin.applicants', compact('job', 'applicants','admin'));
     }
 }
