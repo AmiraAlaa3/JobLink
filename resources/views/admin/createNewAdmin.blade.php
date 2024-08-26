@@ -42,8 +42,12 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary me-3">Save</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="{{ route('admin.storeAdmin') }}">
+                    <button type="submit" class="btn btn-primary me-3">Save</button>
+                </a>
+                <a href="{{ route('admin.admins') }}">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </a>
             </div>
         </form>
         </div>
