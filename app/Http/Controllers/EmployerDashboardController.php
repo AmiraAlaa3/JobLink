@@ -19,9 +19,11 @@ class EmployerDashboardController extends Controller
     public function index()
     {
         // Count the number of jobs and applications for the authenticated employer
-        $jobCount = JobPosting::where('employer_id', Auth::id())->count();
-        $applicationCount = Application::whereHas('jobPosting', function ($query) {
-            $query->where('employer_id', Auth::id());
+        $employerId = Auth::user()->employer->id;
+        $jobCount = JobPosting::where('employer_id',  Auth::user()->employer->id)->count();
+
+        $applicationCount = Application::whereHas('jobPosting', function ($query) use ($employerId) {
+            $query->where('employer_id', $employerId);
         })->count();
 
         return view('employer.dashboard', compact('jobCount', 'applicationCount'));
