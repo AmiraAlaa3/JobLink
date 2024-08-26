@@ -80,14 +80,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/job_posting/create', [JobPostingController::class,'create'])->name('job_posting.create');
     Route::post('/job_posting', [JobPostingController::class, 'store'])->name('job_posting.store');
     Route::get('/job_posting/{job}', [JobPostingController::class, 'show'])->name('job_posting.show');
-
     Route::get('/job_posting/{job}/edit', [JobPostingController::class, 'edit'])->name('job_posting.edit');
     Route::put('/job_posting/{job}', [JobPostingController::class, 'update'])->name('job_posting.update');
     Route::delete('/job_posting/{job}', [JobPostingController::class, 'destroy'])->name('job_posting.destroy');
     Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
-
 });
+
+// Route of candidate application
+Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
+Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
+
 
 //admin Routes - protected by auth
 Route::middleware('auth')->group(function () {

@@ -12,31 +12,31 @@ class JobPosting extends Model
     protected $table = 'job_postings';
 
     use HasFactory;
-     // Define the relationship to Employer
-     public function employer()
-     {
-         return $this->belongsTo(Employer::class);
-     }
+    // Define the relationship to Employer
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
 
-     // Define the relationship to Location
-     public function location()
-     {
-         return $this->belongsTo(Location::class);
-     }
+    // Define the relationship to Location
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 
-     // Define the relationship to Category
-     public function category()
-     {
-         return $this->belongsTo(Category::class);
-     }
+    // Define the relationship to Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-     // Define the relationship to Application
-     public function applications()
-     {
-         return $this->hasMany(Application::class);
-     }
+    // Define the relationship to Application
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'job_posting_id');
+    }
 
-     protected $fillable = [
+    protected $fillable = [
         'title',
         'description',
         'skills_required',
@@ -45,7 +45,7 @@ class JobPosting extends Model
         'work_type',
         'application_deadline',
         'category_id',
-        'employer_id',  
+        'employer_id',
     ];
 
     protected $casts = [
