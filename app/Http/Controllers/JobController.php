@@ -20,10 +20,9 @@ class JobController extends Controller
         $candidate = Candidate::where('user_id', $user->id)->first();
 
 
-        // Start query to fetch job postings
+        
         $query = JobPosting::query();
 
-        // Apply filters if selected
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -50,7 +49,6 @@ class JobController extends Controller
         }
 
 
-        // Fetch the filtered job postings
         $jobs = $query->with('category', 'location')->get();
 
         return view('candidates.index', compact('jobs', 'categories', 'locations','candidate'));
@@ -58,7 +56,6 @@ class JobController extends Controller
 
     public function show($id)
     {
-        // Eager load employer and location relationships
         $job = JobPosting::with(['employer', 'location', 'applications','category'])->findOrFail($id);
         $applicationCount = $job->applications->count();
         $user = Auth::user();

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\AdminController;
+
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomeController;
@@ -83,7 +85,8 @@ Route::middleware('auth')->group(function () {
 //     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
 
 // });
-
+Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
+Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
 
 
 

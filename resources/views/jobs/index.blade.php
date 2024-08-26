@@ -17,6 +17,14 @@
 
                     <p class="card-text"><strong>Posted by:</strong> {{ $employer->user->name }}</p>
                     <p class="card-text"><strong>Work Type:</strong> {{ $job->work_type }}</p>
+                    <p class="card-text"><strong>Status:</strong>
+                        @if($job->status == 'active')
+                            <span class="badge bg-success">Active</span>
+                        @else
+                            <span class="badge bg-danger">Inactive</span>
+                        @endif
+                    </p>
+                    </p>
 
                     <p class="card-text">This job has {{ $job->applications()->count()}} Application</p>
 

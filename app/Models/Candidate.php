@@ -22,12 +22,13 @@ class Candidate extends Model
     // Define the relationship to user
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     // Define the relationship to Application
     public function applications()
     {
+
         return $this->hasMany(Application::class, 'candidate_id', 'id');
     }
 }
