@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $table = 'applications';
+    protected $table = "applications";
+    protected $fillable = ['candidate_id', 'job_posting_id', 'status', 'cv'];
     use HasFactory;
     // Define the relationship to candidate
     public function candidate()
     {
-        return $this->belongsTo(Candidate::class, 'user_id', 'user_id');
+
+        return $this->belongsTo(Candidate::class, 'candidate_id', 'id');
+
     }
 
     // Define the relationship to JobPosting
