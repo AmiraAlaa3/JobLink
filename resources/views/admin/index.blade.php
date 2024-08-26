@@ -24,7 +24,7 @@
         <tbody>
             @foreach($jobPostings as $job)
                 <tr>
-                    <td>{{ $job->job_title }}</td>
+                    <td>{{ $job->title }}</td>
                     <td>{{ $job->employer->company_name }}</td>
                     <td>{{ $job->location->location_name }}</td>
                     <td>{{ $job->applications_count }}</td>

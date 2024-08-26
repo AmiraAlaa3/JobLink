@@ -10,7 +10,7 @@
 <body>
     
 <div class="container">
-    <h1>Applicants for {{ $job->job_title }}</h1>
+    <h1>Applicants for {{ $job->title }}</h1>
     <table class="table">
         <thead>
             <tr>
@@ -26,7 +26,8 @@
                     <td>{{ $application->candidate->user->name   }}</td>
                     <td>{{ $application->candidate->user->email    }}</td>
                     <td>{{ $application->candidate->phone_number  }}</td>
-                    <td>    @if($application->candidate && $application->cv)
+                    <td>   
+                         @if($application->candidate && $application->cv)
                           <a href="{{ asset('storage/' . $application->cv) }}" target="_blank">View CV</a>
                             @else
                                 N/A
