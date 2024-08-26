@@ -103,5 +103,6 @@ Route::middleware('auth')->group(function () {
  });
 
 
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 

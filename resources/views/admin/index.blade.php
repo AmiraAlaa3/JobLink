@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{ $job->title }}</td>
                     <td>{{ $job->employer->company_name }}</td>
-                    <td>{{ $job->location->location_name }}</td>
+                    <td>{{ $job->location->name }}</td>
                     <td>{{ $job->applications_count }}</td>
                     <td>
                         <a href="{{ route('admin.applicants', $job->id) }}" class="btn btn-primary">View Applicants</a>
