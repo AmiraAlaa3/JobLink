@@ -30,7 +30,7 @@ class LoginController extends Controller
             // Redirect based on the user's role
             switch ($user->role) {
                 case 'admin':
-                    return redirect()->intended(route('admin_dashboard'));
+                    return redirect()->intended(route('admin.jobs'));
                 case 'employer':
                     return redirect()->intended(route('employer.dashboard'));
                 case 'candidate':
