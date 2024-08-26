@@ -15,6 +15,8 @@
     <meta property="og:type" content="website">
 
     <link rel="icon" href={{ asset('images/work-in-progress.png') }} type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     {{-- icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -38,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Dashboard</a>
+                        <a class="nav-link" href={{route('admin.dashboard')}}>Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href={{ route('admin.jobs') }}>All Jobs</a>

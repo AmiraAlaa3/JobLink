@@ -23,7 +23,7 @@
                     <td>{{ $application->candidate->phone_number  }}</td>
                     <td>
                          @if($application->candidate && $application->cv)
-                          <a href="{{ asset('storage/' . $application->cv) }}" target="_blank">View CV</a>
+                          <a href="{{ asset('uploades/' . $application->cv) }}" target="_blank">View CV</a>
                             @else
                                 N/A
                             @endif

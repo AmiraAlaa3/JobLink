@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
     Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
-
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 //     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 //     Route::get('/admin/candidates', [AdminController::class, 'indexCandidates'])->name('admin.candidates');
 //     Route::get('/admin/candidates/{candidate}', [AdminController::class, 'editCandidate'])->name('admin.edit_candidate');
@@ -103,6 +103,5 @@ Route::middleware('auth')->group(function () {
  });
 
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 
