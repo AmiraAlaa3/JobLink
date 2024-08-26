@@ -11,7 +11,8 @@
                 <p class="mt-3 text-muted  mb-0">{{ $job->created_at->diffInDays(now()) }} days ago</p>
                 <p class="text-muted">{{ $applicationCount }} {{ Str::plural('application', $applicationCount) }}
                 </p>
-                @if ($candidate->applications->contains('job_posting_id', $job->id))
+
+                @if (auth()->user()->candidate && auth()->user()->candidate->applications->contains('job_posting_id', $job->id))
                     <p class="text-success">You have already applied for this job.</p>
                 @else
                     <a href="{{ route('job.apply', $job->id) }}" class="btn btn-info">Apply</a>

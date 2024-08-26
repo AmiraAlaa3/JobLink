@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-     @dd($employer)
+     <a href="{{route('employer_account')}}">Account</a>
 </body>
 </html>
