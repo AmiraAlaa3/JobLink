@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPosting;
 use App\Models\Category;
+use App\Models\Employer;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,11 @@ class JobPostingController extends Controller
     // Display a listing of the jobs for the authenticated employer
     public function index()
     {
-        $jobs = JobPosting::where('employer_id', Auth::id())->get();
-        return view('jobs.index', compact('jobs'));
+        $jobs = JobPosting::where('employer_id', Auth::user()->employer->id)->get();
+
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->first();
+        return view('jobs.index', compact('jobs','employer'));
     }
 
     // Show the form for creating a new job
@@ -22,7 +26,9 @@ class JobPostingController extends Controller
     {
         $locations = Location::all();
         $categories = Category::all();
-        return view('jobs.create', compact('locations','categories'));
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->first();
+        return view('jobs.create', compact('locations','categories','employer'));
     }
 
     // Store a newly created job in storage
@@ -40,16 +46,18 @@ class JobPostingController extends Controller
         ]);
 
         $job = new JobPosting($request->all());
-        $job->employer_id = Auth::id();
+        $job->employer_id = Auth::user()->employer->id;
         $job->save();
 
-        return redirect()->route('jobs.index')->with('success', 'Job created successfully!');
+        return redirect()->route('job_posting.index')->with('success', 'Job created successfully!');
     }
 
     // Display the specified job
     public function show(JobPosting $job)
     {
-        return view('jobs.show', compact('job'));
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->first();
+        return view('jobs.show', compact('job','employer'));
     }
 
     // Show the form for editing the specified job
@@ -58,7 +66,11 @@ class JobPostingController extends Controller
         $this->authorize('update', $job);
         $locations = Location::all();
         $categories = Category::all();
-        return view('jobs.edit', compact('job', 'locations','categories'));
+
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->first();
+
+        return view('jobs.edit', compact('job', 'locations','categories','employer'));
     }
 
     // Update the specified job in storage
@@ -79,7 +91,7 @@ class JobPostingController extends Controller
 
         $job->update($request->all());
 
-        return redirect()->route('jobs.index')->with('success', 'Job updated successfully!');
+        return redirect()->route('job_posting.index')->with('success', 'Job updated successfully!');
     }
 
     // Remove the specified job from storage
@@ -88,7 +100,7 @@ class JobPostingController extends Controller
         $this->authorize('delete', $job); // Ensure only the owner can delete
         $job->delete();
 
-        return redirect()->route('jobs.index')->with('success', 'Job deleted successfully!');
+        return redirect()->route('job_posting.index')->with('success', 'Job deleted successfully!');
     }
 }
 
