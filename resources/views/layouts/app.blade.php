@@ -42,7 +42,7 @@
                         <a class="nav-link" href={{ route('candidate_account') }}>Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Application</a>
+                        <a class="nav-link" href={{ route('candidate_applications') }}>Application</a>
                     </li>
 
                 </ul>

@@ -17,7 +17,7 @@
                     <input type="text" placeholder="Name" name="name" id="nameInput" required />
                     <input type="email" placeholder="Email" name="email" id="emailInput" required />
                     <input type="password" placeholder="Password" name="password" id="password" required />
-                    <input type="password" placeholder="Confirm Password" name="password_confirmation" required />
+                    <input type="password" placeholder="Confirm Password" name="password_confirmation" id="confirmPasswordInput" required />
                     <select name="role" id="roleSelect" required>
                         <option value="" selected disabled>Select your role</option>
                         <option value="employer">Employer</option>
@@ -121,4 +121,7 @@
             </div>
         </div>
     </div>
+    <script>
+
+    </script>
 @endsection

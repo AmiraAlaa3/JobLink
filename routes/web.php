@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::get('candidate/profile/edit', [CandidateController::class, 'profile_edit'])->name('candidate_profile_edit');
     Route::put('candidate/profile/update/{id}', [CandidateController::class, 'profile_update'])->name('candidate_profile_update');
     Route::get('/candidate/{id}/download', [CandidateController::class, 'downloadCV'])->name('candidate.download');
+    Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
+    Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
     // jobs and apply job
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
@@ -80,14 +82,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/job_posting/create', [JobPostingController::class,'create'])->name('job_posting.create');
     Route::post('/job_posting', [JobPostingController::class, 'store'])->name('job_posting.store');
     Route::get('/job_posting/{job}', [JobPostingController::class, 'show'])->name('job_posting.show');
-
     Route::get('/job_posting/{job}/edit', [JobPostingController::class, 'edit'])->name('job_posting.edit');
     Route::put('/job_posting/{job}', [JobPostingController::class, 'update'])->name('job_posting.update');
     Route::delete('/job_posting/{job}', [JobPostingController::class, 'destroy'])->name('job_posting.destroy');
     Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
-
 });
+
 
 //admin Routes - protected by auth
 Route::middleware('auth')->group(function () {
@@ -100,7 +101,7 @@ Route::middleware('auth')->group(function () {
 //     Route::put('/admin/candidates/{candidate}', [AdminController::class, 'updateCandidate'])->name('admin.update_candidate');
 //     Route::delete('/admin/candidates/{candidate}', [AdminController::class, 'destroyCandidate'])->name('admin.destroy_candidate');
 //
- });
+});
 
 
 

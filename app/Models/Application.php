@@ -21,6 +21,6 @@ class Application extends Model
     // Define the relationship to JobPosting
     public function jobPosting()
     {
-        return $this->belongsTo(JobPosting::class);
+        return $this->belongsTo(JobPosting::class, 'job_posting_id');
     }
 }
