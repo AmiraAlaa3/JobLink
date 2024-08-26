@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Candidate;
 use App\Models\User;
+use App\Models\JobPosting;
 use Illuminate\Support\Facades\Storage;
 class CandidateController extends Controller
 {
@@ -66,8 +68,8 @@ class CandidateController extends Controller
 
          // Handle the date of birth
         if ($request->filled('day') && $request->filled('month') && $request->filled('year')) {
-         $dateOfBirth = $request->input('year') . '-' . str_pad($request->input('month'), 2, '0', STR_PAD_LEFT) . '-' . str_pad($request->input('day'), 2, '0', STR_PAD_LEFT);
-         $candidate->date_of_birth = $dateOfBirth;
+            $dateOfBirth = $request->input('year') . '-' . str_pad($request->input('month'), 2, '0', STR_PAD_LEFT) . '-' . str_pad($request->input('day'), 2, '0', STR_PAD_LEFT);
+            $candidate->date_of_birth = $dateOfBirth;
         }
 
         // Handle the image upload
@@ -110,6 +112,17 @@ class CandidateController extends Controller
 
         // Redirect back with success message
         return redirect()->route('candidate_account')->with('success', 'Profile updated successfully!');
+    }
+
+    public function candidateApp()
+    {
+        $user = Auth::user();
+        $candidate = Candidate::where('user_id', $user->id)->first();
+        if (!$candidate) {
+            return redirect()->back()->with('error', 'Candidate not found.');
+        }
+        $applications = $candidate->applications()->with('jobPosting')->get();
+        return view('candidates.applications', compact('candidate', 'applications'));
     }
 
 }

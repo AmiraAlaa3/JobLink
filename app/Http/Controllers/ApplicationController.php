@@ -8,6 +8,7 @@ use App\Models\Application;
 use App\Models\JobPosting;
 use App\Models\Candidate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class ApplicationController extends Controller
 {
@@ -54,6 +55,9 @@ class ApplicationController extends Controller
 
         return redirect()->route('jobs.index')->with('success', 'Your application has been submitted successfully!');
     }
+
+
+
 
 
 }
