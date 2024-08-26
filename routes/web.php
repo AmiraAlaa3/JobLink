@@ -67,12 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::get('employer/account', [EmployerAccountController::class, 'account'])->name('employer_account');
     Route::get('employer/profile/edit', [EmployerAccountController::class, 'profile_edit'])->name('Employer_profile_edit');
     Route::put('employer/profile/update/{id}', [EmployerAccountController::class, 'profile_update'])->name('employer_profile_update');
-    Route::get('employer/job/create', [JobPostingController::class, 'create'])->name('employer_job_create');
-    Route::post('employer/job/store', [JobPostingController::class, 'store'])->name('employer_job_store');
-    Route::get('employer/job/{id}/edit', [JobPostingController::class, 'edit'])->name('employer_job_edit');
-    Route::put('employer/job/{id}', [JobPostingController::class, 'update'])->name('employer_job_update');
-    Route::delete('employer/job/{id}', [JobPostingController::class, 'destroy'])->name('employer_job_delete');
-    Route::get('employer/applications', [JobApplicationController::class, 'index'])->name('employer_applications');
 });
 
 
@@ -81,8 +75,6 @@ Route::get('hi',function(){
 });
 
 //Job Posting Routes - protected by auth
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/job_posting', [JobPostingController::class,'index'])->name('job_posting.index');
     Route::get('/job_posting/create', [JobPostingController::class,'create'])->name('job_posting.create');
@@ -97,14 +89,19 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// Route of dashboard
-// Route::middleware('auth')->group(function () {
-//     Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('employer.dashboard');
-//     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
+//admin Routes - protected by auth
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
+    Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
 
-// });
-Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
-Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
+//     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+//     Route::get('/admin/candidates', [AdminController::class, 'indexCandidates'])->name('admin.candidates');
+//     Route::get('/admin/candidates/{candidate}', [AdminController::class, 'editCandidate'])->name('admin.edit_candidate');
+//     Route::put('/admin/candidates/{candidate}', [AdminController::class, 'updateCandidate'])->name('admin.update_candidate');
+//     Route::delete('/admin/candidates/{candidate}', [AdminController::class, 'destroyCandidate'])->name('admin.destroy_candidate');
+//
+ });
+
 
 
 
