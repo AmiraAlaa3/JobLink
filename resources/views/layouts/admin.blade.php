@@ -38,21 +38,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href={{ route('employer.dashboard') }}>Dashboard</a>
+                        <a class="nav-link" href="">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href={{ route('job_posting.index') }}>All Jobs</a>
+                        <a class="nav-link" href={{ route('admin.jobs') }}>All Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href= {{ route('employer_account') }}>Account</a>
+                        <a class="nav-link" href="">Account</a>
                     </li>
 
                 </ul>
 
                 <div class="d-flex align-items-center ms-lg-5 me-2 my-sm-3">
                     @if (auth()->check())
-                        @if ($employer->company_logo)
-                            <img src="{{ asset('uploads/' . $employer->company_logo) }}" alt="User Picture"
+                        @if ($admin->image)
+                            <img src="{{ asset('uploads/' . $admin->image) }}" alt="User Picture"
                                 width="40" height="40" class="rounded-circle d-inline-block align-text-top">
                         @else
                             <img src="{{ asset('images/user.png') }}" alt="User Profile Picture" width="40"
@@ -60,7 +60,7 @@
                         @endif
 
                         <!-- Display Company Name -->
-                        <span class="ms-2">{{ $employer->company_name }}</span>
+                        <span class="ms-2">{{ $admin->name }}</span>
 
                         <a href="{{ route('logout') }}" class="btn btn-outline-danger ms-3">Logout</a>
                     @else
