@@ -14,7 +14,12 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EmployerController;
+
+use App\Http\Controllers\EmployerAccountController;
+
+
 use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,11 +55,20 @@ Route::middleware('auth')->group(function () {
     Route::get('candidate/profile/edit', [CandidateController::class, 'profile_edit'])->name('candidate_profile_edit');
     Route::put('candidate/profile/update/{id}', [CandidateController::class, 'profile_update'])->name('candidate_profile_update');
     Route::get('/candidate/{id}/download', [CandidateController::class, 'downloadCV'])->name('candidate.download');
+    Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
+    Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
     // jobs and apply job
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
-    Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
-    Route::get('/apply/{job}', [ApplicationController::class, 'create'])->name('job.apply');
+    Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->name('application.store');
+    Route::get('/apply/{job}', [JobApplicationController::class, 'create'])->name('job.apply');
+});
+// Employer Routes - Protected by 'auth' middleware
+Route::middleware('auth')->group(function () {
+    Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer_dashboard');
+    Route::get('employer/account', [EmployerAccountController::class, 'account'])->name('employer_account');
+    Route::get('employer/profile/edit', [EmployerAccountController::class, 'profile_edit'])->name('Employer_profile_edit');
+    Route::put('employer/profile/update/{id}', [EmployerAccountController::class, 'profile_update'])->name('employer_profile_update');
 });
 
 
@@ -75,15 +89,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
 });
 
-// Route of candidate application
-Route::get('/Candidate/Applications', [CandidateController::class, "candidateApp"])->name('candidate_applications');
-Route::delete('/Candidate/application/{id}', [ApplicationController::class, 'destroy'])->name('applications.destroy');
-
 
 
 // admin
 Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
 Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
 
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 
