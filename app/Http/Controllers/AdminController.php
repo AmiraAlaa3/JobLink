@@ -52,6 +52,9 @@ class AdminController extends Controller
         return view('admin.addAdmins', compact('admins'));
     }
 
+    public function create() {
+        return view('admin.createNewAdmin');
+    }
 
     public function storeAdmin(Request $request)
     {
@@ -61,7 +64,7 @@ class AdminController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
     
-        $admin = new User;  // Assuming User model is used
+        $admin = new User; 
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->password = bcrypt($request->password);
@@ -71,5 +74,5 @@ class AdminController extends Controller
         return redirect()->route('admin.admins')->with('success', 'Admin added successfully.');
     }
     
-
+    
 }

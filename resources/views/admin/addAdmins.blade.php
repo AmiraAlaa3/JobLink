@@ -7,7 +7,12 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Manage Admins</h1>
-        <button class="btn btn-outline-primary text-primary bg-white" style="border-width: 3px;"><i class="fa-solid fa-plus"></i> Add New Admin</button>
+        <a href="{{ route('admin.create') }}">
+            <button class="btn btn-outline-primary text-primary bg-white" style="border-width: 3px;">
+                <i class="fa-solid fa-plus"></i> Add New Admin
+            </button>
+        </a>
+        
     </div>
 
     <div class="row">

@@ -95,6 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
     Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
     Route::get('/admin/admins', [AdminController::class, 'indexAdmins'])->name('admin.admins');
+    Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
     Route::post('/admin/add-admin', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
 
 
