@@ -45,13 +45,21 @@ class ApplicationController extends Controller
 
 
         $cvPath = $request->file('cv')->store('cvs', 'public');
+          // Store the new resume
+          if ($request->hasFile('cv')) {
+          $file = $request->file('cv');
+          $extension = $file->getClientOriginalExtension();
+          $fileName = time() . '.' . $extension;
+          $file->move(public_path('uploads/cvs'), $fileName);
+
+          }
 
 
         Application::create([
             'candidate_id' => $request->candidate_id,
             'job_posting_id' => $request->job_posting_id,
             'status' => 'pending',
-            'cv' => $cvPath,
+            'cv' => $fileName,
         ]);
 
         return redirect()->route('jobs.index')->with('success', 'Your application has been submitted successfully!');

@@ -3,12 +3,12 @@
 @section('title', 'Application')
 
 @section('content')
-<h1>Applications for {{ $jobPosting->title }}</h1>
+<h2 class="mb-5">Applications for  <span class="text-primary"> {{ $jobPosting->title }} </span></h2>
 
 @if ($applications->isEmpty())
     <p>No applications for this job posting yet.</p>
 @else
-    <table class="table">
+    <table class="table m-auto my-5">
         <thead>
             <tr>
                 <th>ID</th>
@@ -28,9 +28,9 @@
                     <td>{{ $application->candidate->phone_number }}</td>
                     <td>{{ $application->status }}</td>
                     <td>
-                        <a href="{{ route('employer.application_accept', $application->id) }}" class="btn btn-success" onclick="return confirm('Are you sure you want to accept this application?');">Accept</a>
-                        <a href="{{ route('employer.application_reject', $application->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject</a>
-                        <a href="{{ route('employer.application_resume', $application->id) }}" class="btn btn-primary">Download Resume</a>
+                        <a href="{{ route('employer.application_accept', $application->id) }}" class="btn btn-outline-success" onclick="return confirm('Are you sure you want to accept this application?');">Accept</a>
+                        <a href="{{ route('employer.application_reject', $application->id) }}" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject</a>
+                        <a href="{{ route('employer.application_resume', $application->id) }}" class="btn btn-outline-primary">Download Resume</a>
                     </td>
                 </tr>
             @endforeach

@@ -7,7 +7,7 @@
         <div class="row">
             @foreach ($applications as $application)
                 <div class="col-12 mb-3">
-                    <div class="card border shadow-sm">
+                    <div class="card border-black shadow-sm mb-3">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
                                 @if ($application->jobPosting->employer->company_logo)
@@ -29,7 +29,7 @@
                                     style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link text-danger"
+                                    <button type="submit" class="btn btn-danger text-light"
                                      aria-label="Close"
                                      >
                                         <i class="fa-solid fa-x"></i>

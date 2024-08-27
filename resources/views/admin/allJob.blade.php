@@ -30,7 +30,7 @@
                                     <td>{{ $job->salary_range }}</td>
                                     <td>{{ $job->location->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.acceptJob', $job->id) }}" class="btn btn-success me-2">Accept</a>
+                                        <a href="{{ route('admin.acceptJob', $job->id) }}" class="btn btn-success me-2 mb-2">Accept</a>
                                         <a href="{{ route('admin.cancel', $job->id) }}" class="btn btn-danger">Reject</a>
                                     </td>
                                 </tr>
