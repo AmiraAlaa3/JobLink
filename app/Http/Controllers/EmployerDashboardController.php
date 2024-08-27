@@ -26,5 +26,16 @@ class EmployerDashboardController extends Controller
 
         return view('employers.dashboard', compact('jobCount', 'applicationCount','employer','jobPostings'));
     }
+    function applications(){
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->firstOrFail();
+        $jobPostings = $employer->jobPostings()->get();
+
+        $employerId = Auth::user()->employer->id;
+        $applications = Application::whereHas('jobPosting', function ($query) use ($employerId) {
+            $query->where('employer_id', $employerId);
+        })->get();
+        return view('employers.applications', compact('applications','employer','jobPostings'));
+    }
 }
 

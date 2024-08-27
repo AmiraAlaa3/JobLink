@@ -12,6 +12,7 @@
                 <th>Job Title</th>
                 <th>Company Name</th>
                 <th>Location</th>
+                <th>Status</th>
                 <th>Applicants Count</th>
                 <th>Actions</th>
             </tr>
@@ -22,6 +23,17 @@
                     <td>{{ $job->title }}</td>
                     <td>{{ $job->employer->company_name }}</td>
                     <td>{{ $job->location->name }}</td>
+                    <td>
+                        @if ($job->status === 'await')
+                            <span class="badge bg-warning">pending</span>
+                        @elseif ($job->status === 'active')
+                           <span class="badge bg-success">Active</span>
+                        @elseif ($job->status === 'inactive')
+                           <span class="badge bg-info">Inactive</span>
+                        @elseif ($job->status === 'closed')
+                           <span class="badge bg-danger">Closed</span>
+                        @endif
+                    </td>
                     <td>{{ $job->applications_count }}</td>
                     <td>
                         <a href="{{ route('admin.applicants', $job->id) }}" class="btn btn-primary">View Applicants</a>

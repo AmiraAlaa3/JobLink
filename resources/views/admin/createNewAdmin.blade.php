@@ -4,10 +4,10 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('admin.storeAdmin') }}">
+    <form method="POST" action="{{ route('admin.storeAdmin') }}" class="border p-5">
         @csrf
         <div class="modal-header">
-            <h3 class="modal-title mb-3" id="addAdminModalLabel">Add New <span class="text-primary">Admin</span></h3>
+            <h2 class="modal-title mb-3" id="addAdminModalLabel">Add New <span class="text-primary">Admin</span></h2>
         </div>
         <div class="modal-body">
             <div class="form-group mb-3">
@@ -60,7 +60,11 @@
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary me-3">Save</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a href="{{route('admin.admins')}}">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" >
+                Cancal
+            </button>
+            </a>
         </div>
     </form>
 

@@ -39,10 +39,10 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Wuzzuf
+                        <i class="fas fa-gem me-3"></i>JobJourney
                     </h6>
                     <p>
-                        Find your dream job on Wuzzuf, Egypt's leading job board. Search for jobs in various
+                        Find your dream job on JobJourney, Egypt's leading job board. Search for jobs in various
                         industries, apply online, and connect with top employers. Start your career journey with us
                         today.
                     </p>
@@ -88,12 +88,12 @@
 
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p><i class="fas fa-home me-3"></i>Menofia, Egypt</p>
+                    <p><i class="fas fa-home me-3"></i>Cairo, Egypt</p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
-                        ameraalaa641@gmail.com
+                        JobJourney@gmail.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i>+20 1005729533</p>
+                    <p><i class="fas fa-phone me-3"></i>19700</p>
 
                 </div>
             </div>

@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- meta tages --}}
     <meta name="keywords"
-        content="Wuzzuf, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
-    <meta property="og:title" content="Wuzzuf - Your Premier Job Search Platform in Egypt">
+        content="JobJourney, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
+    <meta property="og:title" content="JobJourney - Your Premier Job Search Platform in Egypt">
     <meta property="og:description"
-        content="Find your dream job on Wuzzuf, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
+        content="Find your dream job on JobJourney, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
     <meta property="og:image" content="{{ asset('images/work-in-progress.png') }}">
     <meta property="og:type" content="website">
 
@@ -23,13 +23,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <title>@yield('title', 'Wuzzuf')</title>
+    <title>@yield('title', 'JobJourney')</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-ligth bg-ligth mb-5">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold fs-3" style="color:rgb(0, 85, 217)" href="#">Wuzzuf</a>
+            <a class="navbar-brand fw-bold fs-3" style="color:rgb(0, 85, 217)" href="#">JobJourney</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -42,6 +42,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href={{ route('job_posting.index') }}>All Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href= {{ route('employer.applications') }}>Applications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href= {{ route('employer_account') }}>Account</a>
