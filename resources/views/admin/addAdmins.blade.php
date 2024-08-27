@@ -11,10 +11,8 @@
             <button class="btn btn-outline-primary text-primary bg-white" style="border-width: 3px;">
                 <i class="fa-solid fa-plus"></i> Add New Admin
             </button>
-        </a>
-        
+        </a>     
     </div>
-
     <div class="row">
         @foreach($admins as $admin)
             <div class="col-12 mb-4">
@@ -22,7 +20,13 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5>{{ $admin->name }}</h5>
                         <div>
-                            <a href="#" class="btn btn-sm btn-danger"><i class="fa-solid fa-x"></i></a>
+                            <form action="{{ route('admin.destroy', $admin->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                            <button class="btn btn-sm btn-danger">
+                                <i class="fa-solid fa-x"></i>
+                            </button>
+                            </form>
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,5 +39,4 @@
         @endforeach
     </div>
 </div>
-
-@endsection
+@endsection 

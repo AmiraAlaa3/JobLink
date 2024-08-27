@@ -74,5 +74,14 @@ class AdminController extends Controller
         return redirect()->route('admin.admins')->with('success', 'Admin added successfully.');
     }
     
+    public function destroy($id)
+    {
+        $admin = User::find($id);
+        if (!$admin) {
+            return redirect()->route('admin.admins')->with('error', 'Admin not found.');
+        }
+        $admin->delete();
+        return redirect()->route('admin.admins')->with('success', 'Admin deleted successfully.');
+    }
     
 }
