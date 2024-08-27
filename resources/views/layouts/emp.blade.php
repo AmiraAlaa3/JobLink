@@ -44,6 +44,9 @@
                         <a class="nav-link" href={{ route('job_posting.index') }}>All Jobs</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href= {{ route('employer.applications') }}>Applications</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href= {{ route('employer_account') }}>Account</a>
                     </li>
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Application;
 use App\Models\JobPosting;
 use App\Models\Candidate;
+use App\Models\Employer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 
@@ -17,7 +18,7 @@ class ApplicationController extends Controller
     {
         $user = Auth::user();
         $candidate = Candidate::where('user_id', $user->id)->first();
-        return view('candidates.apply', compact('job','candidate'));
+        return view('candidates.apply', compact('job', 'candidate'));
     }
 
 
@@ -66,10 +67,41 @@ class ApplicationController extends Controller
         }
 
         $application->delete();
-    
+
         return redirect()->route('candidate_applications')->with('success', 'Application deleted successfully.');
     }
-    
 
+    public function applicationsByJob($id)
+    {
+        $user = Auth::user();
+        $employer = Employer::where('user_id', $user->id)->firstOrFail();
+        $jobPosting = JobPosting::findOrFail($id);
+        $applications = $jobPosting->applications;
 
+        return view('employers.job_applications', compact('applications', 'jobPosting', 'employer'));
+    }
+    function accept($id){
+        $application = Application::findOrFail($id);
+        $application->status = 'accepted';
+        $application->save();
+        return redirect()->route('employer.applications')->with('success', 'Application accepted successfully.');
+    }
+    function reject($id){
+        $application = Application::findOrFail($id);
+        $application->status ='rejected';
+        $application->save();
+        return redirect()->route('employer.applications')->with('success', 'Application rejected successfully.');
+    }
+
+    function resume($id){
+        $candidate = Candidate::findOrFail($id);
+        $filePath = public_path('uploads/cvs') . '/' . $candidate->resume;
+
+        if (file_exists($filePath)) {
+            // Download the file
+            return response()->download($filePath, $candidate->resume);
+        } else {
+            return "not";
+        }
+    }
 }

@@ -69,6 +69,15 @@ Route::middleware('auth')->group(function () {
     Route::get('employer/account', [EmployerAccountController::class, 'account'])->name('employer_account');
     Route::get('employer/profile/edit', [EmployerAccountController::class, 'profile_edit'])->name('Employer_profile_edit');
     Route::put('employer/profile/update/{id}', [EmployerAccountController::class, 'profile_update'])->name('employer_profile_update');
+
+    // jobs and applications
+    Route::get('/employer/applications', [EmployerDashboardController::class, 'applications'])->name('employer.applications');
+    Route::get('/employer/applications/{id}', [ApplicationController::class, 'show'])->name('employer.application_show');
+    Route::get('/employer/applications/{id}/accept', [ApplicationController::class, 'accept'])->name('employer.application_accept');
+    Route::get('/employer/applications/{id}/reject', [ApplicationController::class,'reject'])->name('employer.application_reject');
+    Route::get('/employer/applications/{id}/resume', [ApplicationController::class,'resume'])->name('employer.application_resume');
+    Route::get('/employer/job/{id}/applications', [ApplicationController::class, 'applicationsByJob'])->name('employer.job_applications');
+
 });
 
 
