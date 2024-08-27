@@ -12,7 +12,7 @@ class JobController extends Controller
 {
     public function index(Request $request)
     {
-        
+
         $categories = Category::all();
         $locations = Location::all();
 
@@ -20,8 +20,10 @@ class JobController extends Controller
         $candidate = Candidate::where('user_id', $user->id)->first();
 
 
-        
+
         $query = JobPosting::query();
+         // Filter by active status
+        $query->where('status', 'active');
 
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);

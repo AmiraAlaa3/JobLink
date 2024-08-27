@@ -46,7 +46,10 @@
                         <a class="nav-link" href={{ route('admin.jobs') }}>All Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Account</a>
+                        <a class="nav-link" href={{ route('admin.admins') }}>Admins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ route('admin.allJobs') }}>Check Jobs</a>
                     </li>
 
                 </ul>
@@ -60,9 +63,8 @@
                             <img src="{{ asset('images/user.png') }}" alt="User Profile Picture" width="40"
                                 height="40" class="rounded-circle d-inline-block align-text-top">
                         @endif
-
                         <!-- Display Company Name -->
-                        <span class="ms-2">{{ $admin->name }}</span>
+                        <span class="ms-2">{{ Auth::user()->name }}</span>
 
                         <a href="{{ route('logout') }}" class="btn btn-outline-danger ms-3">Logout</a>
                     @else

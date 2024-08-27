@@ -69,57 +69,6 @@ class AdminController extends Controller
     ));
 }
 
-    // public function dashboard()
-    // {
-    //     $admin = Auth::user();
-
-    //     // Fetch counts from each table
-    //     $applicationsCount = DB::table('applications')->count();
-    //     $candidatesCount = DB::table('candidates')->count();
-    //     $jobsCount = DB::table('job_postings')->count();
-    //     $categoriesCount = DB::table('categories')->count();
-    //     $employersCount = DB::table('employers')->count();
-    //     $locationsCount = DB::table('locations')->count();
-
-    //     // Fetch recent job postings and applications
-    //     $recentJobs = DB::table('job_postings')
-    //         ->orderBy('created_at', 'desc')
-    //         ->take(5)
-    //         ->get(['id', 'title', 'created_at']); // Fetch only necessary columns
-
-    //         $recentApplications = DB::table('applications')
-    //         ->join('candidates', 'applications.candidate_id', '=', 'candidates.id')
-    //         ->join('users', 'candidates.user_id', '=', 'users.id') // Join the users table
-    //         ->join('job_postings', 'applications.job_posting_id', '=', 'job_postings.id')
-    //         ->orderBy('applications.created_at', 'desc')
-    //         ->take(5)
-    //         ->get([
-    //             'applications.id',
-    //             'users.name as candidate_name', // Access the user name here
-    //             'job_postings.title as job_title',
-    //             'applications.created_at'
-    //         ]);
-
-    //     // Calculate job posting statistics
-    //     $jobStats = DB::table('job_postings')
-    //         ->select(DB::raw('COUNT(*) as total'), DB::raw("SUM(CASE WHEN status = 'active' THEN 1 ELSE 0 END) as active"))
-    //         ->first();
-
-    //     // Pass the data to the view
-    //     return view('admin.dashboard', compact(
-    //         'applicationsCount',
-    //         'candidatesCount',
-    //         'jobsCount',
-    //         'categoriesCount',
-    //         'employersCount',
-    //         'locationsCount',
-    //         'recentJobs',
-    //         'recentApplications',
-    //         'jobStats',
-    //         'admin'
-    //     ));
-    // }
-
 
 
     public function showApplicants($jobId)
@@ -129,4 +78,74 @@ class AdminController extends Controller
         $admin = Auth::user();
         return view('admin.applicants', compact('job', 'applicants','admin'));
     }
+
+
+    public function indexAdmins(){
+        $admin = Auth::user();
+        $admins = User::where('role', 'admin')->get();
+        return view('admin.addAdmins', compact('admins','admin'));
+    }
+
+    public function create() {
+        $admin = Auth::user();
+        return view('admin.createNewAdmin',compact('admin'));
+    }
+
+    public function storeAdmin(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $admin = new User;
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = bcrypt($request->password);
+        $admin->role = 'admin';  // Set role as admin
+        $admin->save();
+
+        return redirect()->route('admin.admins')->with('success', 'Admin added successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $admin = User::find($id);
+        if (!$admin) {
+            return redirect()->route('admin.admins')->with('error', 'Admin not found.');
+        }
+        $admin->delete();
+        return redirect()->route('admin.admins')->with('success', 'Admin deleted successfully.');
+    }
+
+    // mahmoud
+
+    public function allJobs() {
+        // Get all employers who have jobs with status 'await'
+        $admin = Auth::user();
+        $employers = Employer::whereHas('jobPostings', function($query) {
+            $query->where('status', 'await');
+        })->with(['jobPostings' => function($query) {
+            $query->where('status', 'await');
+        }])->get();
+
+        return view('admin.allJob', compact('employers','admin'));
+    }
+
+    public function acceptJob(JobPosting $job){
+        $job->status ='active';
+        $job->save();
+        return redirect()->route('admin.allJobs')->with('success', 'Job updated successfully!');
+
+
+    }
+    public function cancelJob(JobPosting $job){
+        $job->status ='inactive';
+        $job->save();
+        return redirect()->route('admin.allJobs')->with('success', 'Job updated successfully!');
+
+    }
+
 }
