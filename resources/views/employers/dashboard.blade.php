@@ -67,7 +67,7 @@
                 </div>
                 <div class="card-body">
                     @if ($jobPostings->isEmpty())
-                        <p>You have no job postings yet. <a href="{{ route('job_postings.create') }}">Create one now</a>.</p>
+                        <p>You have no job postings yet. <a href="{{ route('job_posting.create') }}">Create one now</a>.</p>
                     @else
                         <table class="table">
                             <thead>
@@ -79,10 +79,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($jobPostings as $posting)
                                     <tr>
                                         <td>{{ $posting->title }}</td>
-                                        <td>{{ $posting->status ? 'Active' : 'Inactive' }}</td>
+                                        <td>
+                                            @if ($posting->status === 'await')
+                                            <span class="badge bg-warning">pending</span>
+                                        @elseif ($posting->status === 'active')
+                                            <span class="badge bg-success">Active</span>
+                                        @elseif ($posting->status === 'inactive')
+                                            <span class="badge bg-info">Inactive</span>
+                                        @elseif ($posting->status === 'closed')
+                                            <span class="badge bg-danger">Closed</span>
+                                        @endif
+                                        </td>
+
                                         <td>{{ $posting->applications->count() }}</td>
                                         <td>
                                             <a href="{{ route('job_posting.edit', $posting->id) }}" class="btn btn-warning btn-sm">Edit</a>

@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-8 col-lg-8">
             <h1 class="text-center fs-4 fw-semibold mb-3">Apply for {{ $job->title }}</h1>
-            <form class="border p-5" action="{{ route('applications.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="border p-5" action="{{ route('application.store' , $job->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="job_posting_id" value="{{ $job->id }}">
                 <input type="hidden" name="candidate_id" value="{{ auth()->user()->candidate->id }}">
