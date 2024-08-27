@@ -94,6 +94,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/jobs', [AdminController::class, 'index'])->name('admin.jobs');
     Route::get('/admin/jobs/{job}/applicants', [AdminController::class, 'showApplicants'])->name('admin.applicants');
+    Route::get('/admin/admins', [AdminController::class, 'indexAdmins'])->name('admin.admins');
+    Route::get('/admin/create', [AdminController::class,'create'])->name('admin.create');
+    Route::post('/admin/store', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
 
 //     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 //     Route::get('/admin/candidates', [AdminController::class, 'indexCandidates'])->name('admin.candidates');
