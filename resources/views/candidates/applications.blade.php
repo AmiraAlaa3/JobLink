@@ -20,7 +20,7 @@
                         </button>
                     </form>
                 @endif
-                
+
                 </div>
                 <div class="card-body">
                     <p class="text-muted"><strong>Status:</strong> {{ $application->status }}</p>
