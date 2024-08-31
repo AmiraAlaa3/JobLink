@@ -12,6 +12,7 @@
                     <h3 class="mb-0">{{ $employer->company_name }}</h3>
                 </div>
                 <div class="card-body">
+                    <div class="table-responsive my-5">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -37,6 +38,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         @endforeach

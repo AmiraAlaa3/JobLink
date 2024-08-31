@@ -10,7 +10,7 @@
     <div class="row">
         @foreach($jobs as $job)
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card mb-4 border-special">
                 <div class="card-body">
                     <h5 class="card-title fs-4" style="color:rgb(0, 85, 217)">{{ $job->title }}</h5>
                     <p class="card-text">{{ Str::limit($job->description, 100) }}</p>

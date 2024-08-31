@@ -3,6 +3,8 @@
 @section('title', 'jobs Posts')
 
 @section('content')
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-8">
         <form action="{{ isset($job) ? route('job_posting.update', $job) : route('job_posting.store') }}" method="POST"
         class="border p-5">
             @csrf
@@ -21,7 +23,7 @@
             <!-- Job Description -->
             <div class="form-group  mb-3">
                 <label for="description">Job Description</label>
-                <textarea name="description" class="form-control" required>{{ old('description', $job->description ?? '') }}</textarea>
+                <textarea name="description" class="form-control" required rows="8">{{ old('description', $job->description ?? '') }}</textarea>
             </div>
 
             <!-- Skills Required -->
@@ -86,4 +88,5 @@
             <button type="submit" class="btn btn-success">{{ isset($job) ? 'Update Job' : 'Create Job' }}</button>
         </form>
     </div>
+</div>
 @endsection

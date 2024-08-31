@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="row border p-4 rounded shadow-sm bg-light">
+    <div class="row border p-4 rounded shadow-sm bg-light border-special">
         <div class="col-md-2 text-center mb-4 mb-md-0">
             @if($employer->company_logo)
             <img src="{{ asset('uploads/' . $employer->company_logo) }}" class="rounded-circle" width="120" height="120"

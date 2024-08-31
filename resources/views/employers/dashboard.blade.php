@@ -26,7 +26,7 @@
         <!-- Dashboard Stats -->
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12 col-lg-6">
                     <div class="card text-white bg-primary shadow mb-4">
                         <div class="card-body">
                             <div class="row">
@@ -43,7 +43,7 @@
                 </div>
 
 
-                <div class="col-md-6">
+                <div class="col-md-12 col-lg-6">
                     <div class="card text-white bg-primary shadow mb-4">
                         <div class="card-body">
                             <div class="row">
@@ -97,12 +97,12 @@
 
                                         <td>{{ $posting->applications->count() }}</td>
                                         <td>
-                                            <a href="{{ route('job_posting.edit', $posting->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="{{ route('job_posting.show', $posting->id) }}" class="btn btn-info btn-sm">View</a>
+                                            <a href="{{ route('job_posting.edit', $posting->id) }}" class="btn btn-warning btn-sm mb-2">Edit</a>
+                                            <a href="{{ route('job_posting.show', $posting->id) }}" class="btn btn-info btn-sm mb-2">View</a>
                                             <form action="{{ route('job_posting.destroy', $posting->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm mb-2">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

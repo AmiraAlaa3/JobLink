@@ -6,12 +6,12 @@
         <div id="carouselExampleCaptions" class="carousel slide overlay-bottom hero-section" data-bs-ride="carousel">
             <div class="carousel-inner hero-section">
                 <div class="carousel-item active hero-section"> <!-- data-bs-interval="1000" -->
-                    <img src="{{ asset('images/back.webp') }}" class="d-block w-100 h-100" alt="">
+                    <img src="{{ asset('images/back.jpg') }}" class="d-block w-100 h-100" alt="">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center p-5">
                         <h1 class="text-white font-weight-medium fw-semibold display-4 mb-3 hero-title">Find the Best
                             Jobs in Egypt</h1>
                         <p class="text-white fs-5 mb-5 hero-text">
-                            Searching for vacancies & career opportunities? JobJourney helps you in your job search in Egypt
+                            Searching for vacancies & career opportunities? JobLink helps you in your job search in Egypt
                         </p>
                         <div class="row height d-flex justify-content-center align-items-center w-100">
                             <div class="col-md-8">

@@ -8,10 +8,10 @@
 
     {{-- Meta tags --}}
     <meta name="keywords"
-        content="JobJourney, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
-    <meta property="og:title" content="JobJourney - Your Premier Job Search Platform in Egypt">
+        content="JobLink, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
+    <meta property="og:title" content="JobLink - Your Premier Job Search Platform in Egypt">
     <meta property="og:description"
-        content="Find your dream job on JobJourney, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
+        content="Find your dream job on JobLink, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
     <meta property="og:image" content="{{ asset('images/work-in-progress.png') }}">
     <meta property="og:type" content="website">
 
@@ -30,7 +30,7 @@
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
-    <title>JobJourney - Your Job Search Platform</title>
+    <title>JobLink - Your Job Search Platform</title>
 </head>
 
 
