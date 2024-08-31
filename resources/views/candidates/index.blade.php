@@ -31,13 +31,13 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3 mt-4">
+            <div class="col-md-4 mt-4">
                 <label class="mb-1" for="title">Filter by Title:</label>
                 <input type="text" name="title" id="title" class="form-control" value="{{ request('title') }}"
                     placeholder="Job Title">
             </div>
 
-            <div class="col-md-3  mt-4 ">
+            <div class="col-md-4  mt-4 ">
                 <label class="mb-1" for="created_at">Filter by Date of Creation:</label>
                 <input type="date" name="created_at" id="created_at" class="form-control"
                     value="{{ request('created_at') }}">
@@ -53,7 +53,7 @@
                 <input type="number" name="salary_max" id="salary_max" class="form-control"
                     value="{{ request('salary_max') }}" placeholder="Max Salary">
             </div>
-            <div class="col-md-3 mt-4">
+            <div class="col-md-4 mt-4">
                 <label class="mb-1" for="experience_level">Experience Level:</label>
                 <select name="experience_level" id="experience_level" class="form-control">
                     <option value="">All Levels</option>
@@ -76,8 +76,8 @@
         <div class="col-md-10 col-lg-12">
             <div class="row my-5">
                 @forelse ($jobs as $job)
-                    <div class="col-md-12 mb-4">
-                        <div class="card">
+                    <div class="col-md-12 col-lg-8 mb-4">
+                        <div class="card border-special">
                             <div class="row g-0 align-items-center">
                                 <div class="col-md-3 text-center p-3">
                                     @if ($job->employer->company_logo)

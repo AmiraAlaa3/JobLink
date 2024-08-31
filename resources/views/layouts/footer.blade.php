@@ -39,10 +39,10 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>JobJourney
+                        <i class="fas fa-gem me-3"></i>JobLink
                     </h6>
                     <p>
-                        Find your dream job on JobJourney, Egypt's leading job board. Search for jobs in various
+                        Find your dream job on JobLink, Egypt's leading job board. Search for jobs in various
                         industries, apply online, and connect with top employers. Start your career journey with us
                         today.
                     </p>
@@ -91,7 +91,7 @@
                     <p><i class="fas fa-home me-3"></i>Cairo, Egypt</p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
-                        JobJourney@gmail.com
+                        JobLink@gmail.com
                     </p>
                     <p><i class="fas fa-phone me-3"></i>19700</p>
 

@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- meta tages --}}
     <meta name="keywords"
-        content="JobJourney, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
-    <meta property="og:title" content="JobJourney - Your Premier Job Search Platform in Egypt">
+        content="JobLink, jobs in Egypt, job board, careers, employment, find jobs, apply for jobs, top employers, career opportunities">
+    <meta property="og:title" content="JobLink - Your Premier Job Search Platform in Egypt">
     <meta property="og:description"
-        content="Find your dream job on JobJourney, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
+        content="Find your dream job on JobLink, Egypt's leading job board. Search for jobs in various industries, apply online, and connect with top employers. Start your career journey with us today.">
     <meta property="og:image" content="{{ asset('images/work-in-progress.png') }}">
     <meta property="og:type" content="website">
 
@@ -23,14 +23,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>JobJourney</title>
+    <title>JobLink</title>
 </head>
 
 <body>
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark p-3">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold fs-3" style="color:rgb(0, 85, 217)" href={{route('home')}}>JobJourney</a>
+                <a class="navbar-brand fw-bold fs-3" style="color:rgb(0, 85, 217)" href={{route('home')}}>JobLink</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
